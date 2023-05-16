@@ -1,0 +1,35 @@
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button{
+    border: none;
+    border-radius: 5px;
+    background-color: #cba5cc;
+    color: white;
+    padding: 10px;
+}
+button:disabled{
+    background-color: #f3ebf2;
+    border: solid #cba5cc 2px;
+    color: #cba5cc;
+}
+
+.fruitContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background-color: #f3ebf2;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.fruitContainer Button{
+    height: 30px;
+    width: 30px;
+
+}
