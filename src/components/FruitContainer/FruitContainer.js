@@ -1,12 +1,7 @@
 import React from 'react';
 import Button from "../Button/Button";
 
-function FruitContainer ({ name , fruitCount , setFruitCount , children }){
-    [fruitCount, setFruitCount] = React.useState(0);
-    const resetButtonElement = document.getElementById('resetButton');
-    resetButtonElement.addEventListener('click', () =>{ setFruitCount(0)});
-
-
+function FruitContainer ({ name , fruitCount , onClickDecrease , onClickIncrease }){
     return(
         <div className="fruitContainer">
             <h2>
@@ -14,15 +9,12 @@ function FruitContainer ({ name , fruitCount , setFruitCount , children }){
             </h2>
             <Button
                 isDisabled={fruitCount<1}
-                onClick={() => setFruitCount(fruitCount-1)}
-            >-
-            </Button>
+                onClick={onClickDecrease}
+            >-</Button>
             <p>{fruitCount}</p>
             <Button
-                onClick={() => setFruitCount(fruitCount+1)}
-            >+
-            </Button>
-            {children}
+                onClick={onClickIncrease}
+            >+</Button>
         </div>
     );
 }
