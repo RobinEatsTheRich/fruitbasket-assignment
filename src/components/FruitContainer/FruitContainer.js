@@ -3,6 +3,9 @@ import Button from "../Button/Button";
 
 function FruitContainer ({ name , fruitCount , setFruitCount , children }){
     [fruitCount, setFruitCount] = React.useState(0);
+    const resetButtonElement = document.getElementById('resetButton');
+    resetButtonElement.addEventListener('click', () =>{ setFruitCount(0)});
+
 
     return(
         <div className="fruitContainer">
