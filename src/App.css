@@ -1,23 +1,46 @@
 *{
+    /*Makes text look a little softer*/
     color: #393e61;
 }
 button{
-    border: none;
+    /*added border here because it would flicker otherwise*/
+    border: solid #cba5cc 2px;
     border-radius: 5px;
     background-color: #cba5cc;
     color: white;
     padding: 10px;
+    text-align: center;
 }
 button:disabled{
     background-color: #f3ebf2;
     border: solid #cba5cc 2px;
     color: #cba5cc;
 }
+button:disabled:hover{
+    background-color: #f3ebf2;
+}
+button:hover{
+    background-color: #d1b5d0;
+}
+button:active{
+    background-color: white;
+    color: #cba5cc;
+}
 h1{
     margin: 50px 0 20px 0;
     font-size: 30px;
+    text-align: center;
 }
 body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+#root{
+    width: 30%;
+}
+.fruitContainersParent{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -29,6 +52,7 @@ body{
     align-items: center;
     padding: 10px;
     gap: 10px;
+    width: 100%;
     background-color: #f3ebf2;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -37,11 +61,12 @@ body{
 .fruitContainer Button{
     height: 30px;
     width: 30px;
+    padding: 5px;
 }
 
 .formContainer{
     background-color: #f3ebf2;
-    margin-top: 60px;
+    margin: 60px 0 50px 0;
     padding: 30px;
     border-radius: 10px;
 }
@@ -49,3 +74,18 @@ form{
     display: flex;
     flex-direction: column;
 }
+
+label{
+    margin-top: 10px;
+}
+select{
+    margin-left: 10px;
+}
+.messageLabel{
+    display: flex;
+    flex-direction: column;
+}
+.tACLabel{
+     display: flex;
+    margin-bottom: 20px;
+ }

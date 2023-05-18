@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import './App.css';
 import FruitContainersParent from "./components/FruitContaintersParent/FruitContainersParent";
@@ -6,28 +5,12 @@ import Button from "./components/Button/Button";
 
 
 function App() {
-    const { register, handleSubmit } = useForm();
-
-    const [formValues, setFormValues] = useState({
-        firstname: '',
-        lastname: '',
-        age:0,
-        zipcode:'',
-        deliveryFrequency:'weekly',
-        deliveryTime:'day',
-        message:'',
-        termsAndConditions: false
-    });
+    const { register, handleSubmit, watch } = useForm();
+    //This is necessary to make sure the Submit button is disabled if Term and Conditions have not been clicked.
+    const watchTAC = watch('termsAndConditions');
 
     function onFormSubmit(data) {
         console.log(data);
-    }
-
-    const changeForm = e => {
-        setFormValues( formValues =>{
-            return{ ...formValues,[e.target.name]: e.target.value}
-        })
-        console.log(formValues)
     }
 
     return (
@@ -74,6 +57,7 @@ function App() {
                     <label>
                         <input
                             type="radio"
+                            value="afternoon"
                             {...register("deliveryTime")}
                         />
                         Overdag
@@ -81,27 +65,30 @@ function App() {
                     <label>
                         <input
                             type="radio"
+                            value="evening"
                             {...register("deliveryTime")}
                         />
                         's Avonds
                     </label>
-                    <label htmlFor="messageInput">Opmerking
+                    <label htmlFor="messageInput" className="messageLabel">Opmerking
                         <textarea
                             id="messageInput"
-                            cols="60"
-                            rows="30"
+                            cols="20"
+                            rows="5"
                             {...register("message")}
                         ></textarea>
                     </label>
-                    <input
-                        type="checkbox"
-                        {...register("termsAndConditions")}
-                    />
-                    Ik ga akkoord met de voorwaarden
+                    <label className="tACLabel">
+                        <input
+                            type="checkbox"
+                            {...register("termsAndConditions")}
+                        />
+                        Ik ga akkoord met de voorwaarden
+                    </label>
                     <Button
                         buttonType="submit"
-                        onClick={handleSubmit}
-                        buttonDisabled={formValues.termsAndConditions === false}
+                        onSubmit={handleSubmit}
+                        isDisabled={watchTAC === false}
                     >Verzenden</Button>
 
 

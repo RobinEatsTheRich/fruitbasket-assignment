@@ -17,7 +17,7 @@ function FruitContainersParent (){
     }
 
     return(
-        <article>
+        <article className="fruitContainersParent">
             <FruitContainer
                 name= "🍌Bananen"
                 fruitCount={bananaCount}
